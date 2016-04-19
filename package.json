@@ -1,5 +1,5 @@
 {
-  "name": "socket-prompter",
+  "name": "socketprompter",
   "preferGlobal": false,
   "version": "1.0.0",
   "description": "Socket.io-based teleprompter",

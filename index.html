@@ -59,7 +59,8 @@ html, body {
 var socket = io.connect();
 var master=false;
 var fontsize=11;
-var myElement= document.querySelector("#scrollpart");
+
+var myElement= document.querySelector("#scrollpart"); //hammer stuff
 var hammertime = new Hammer(myElement);
     hammertime.get('pinch').set({ enable: true });
 
@@ -88,20 +89,22 @@ hammertime.on('pinchin', function(ev) {
     fontsize=fontsize-(Math.abs(ev.overallVelocity*5));
     if (fontsize<2){fontsize=2};
     //$("#scrollpart").css("font-size", fontsize + "vw")
-    socket.emit('fontsize', {
-        fontsize: fontsize
-	});
-    console.log(ev);
+    if(queryDict.control){
+        socket.emit('fontsize', {
+            fontsize: fontsize
+    	});
+    }
 });
 
 
 hammertime.on('pinchout', function(ev) {
     fontsize=fontsize+(Math.abs(ev.overallVelocity*5));
     //$("#scrollpart").css("font-size", fontsize + "vw")
-    socket.emit('fontsize', {
-        fontsize: fontsize
-	});
-	console.log(ev);
+    if(queryDict.control){
+        socket.emit('fontsize', {
+            fontsize: fontsize
+    	});
+    }
 });
 
 
@@ -153,8 +156,6 @@ var fullScreen = function(){
 
 
 
-
-
 $( document ).ready(function() {
 
     $.get("script.txt", function(data){
@@ -163,7 +164,7 @@ $( document ).ready(function() {
     
     $( window ).scroll(function() {
       if(queryDict.control){
-        scrollPage(); //scroll for everyone the page if control=true in your querystring
+        scrollPage(); //scroll the page for everyone if control=true in your querystring
         }
     });    
     
