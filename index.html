@@ -60,6 +60,8 @@ var socket = io.connect();
 var master=false;
 var fontsize=-1;
 var tempFontSize=-1;
+var sensitivity=.5; //how sensitive pinch control is for font resizing
+
 
 var myElement= document.querySelector("#scrollpart"); //hammer stuff
 var hammertime = new Hammer(myElement);
@@ -88,7 +90,6 @@ $('#scrollpart').bind('touchend', function(ev) {
     
     
 hammertime.on('pinch', function(ev) {
-    var sensitivity=.5;
     var sensitiveScale;
 
 
@@ -191,3 +192,4 @@ $( document ).ready(function() {
 });     
         
 </script>
+</html>
