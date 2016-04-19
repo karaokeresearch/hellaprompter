@@ -3,7 +3,7 @@ Socketprompter is a simple but effective method for controlling an unlimited num
 
 Basics of how to use socketprompter
 * Download it
-* Modify script.txt to your own teleprompter script
+* Modify script.txt to your own teleprompter script - use http://dan.hersam.com/tools/smart-quotes.html to remove any funny looking characters if you pasted from Word or Google Docs. Download-as Plain Text from Google Docs and there should be no problem.
 * Run:
 
        npm install
