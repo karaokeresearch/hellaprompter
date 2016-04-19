@@ -1,0 +1,190 @@
+<html>
+    <head><title>SOCKETPROMPTER</title>
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        </head>
+<body>
+<script src="jquery-2.2.3.min.js"></script>
+<script src="hammer.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<style>
+
+@font-face {
+    font-family: Bitstream Vera Sans Mono;
+    src: url('VeraMono.eot?') format('embedded-opentype'),
+    url('VeraMono.ttf') format('truetype');
+}
+
+#scrollpart
+{
+        font-family: Bitstream Vera Sans Mono;
+        font-size: 11vw;
+        color: #FFFFFF;
+        background-color: #000000;
+        width: 100vw;
+        word-wrap: break-word;
+        white-space: pre-wrap;    
+}
+
+#extragutter
+{
+        background-color: #AAFFAA;
+        width: 100%;
+        height: 3000px; 
+
+}
+
+html, body { 
+    height: 100%; 
+    width: 100%; 
+    background-color: #AAAAAA;
+    margin: 0; 
+    padding: 0;  
+
+    }
+   
+</style>
+
+
+<div id="scrollpart" onclick="fullScreen()">
+</div>
+<br>
+<div id="extragutter" onclick="fullScreen()"></div>
+</body>
+
+
+
+
+<script>
+var socket = io.connect();
+var master=false;
+var fontsize=11;
+var myElement= document.querySelector("#scrollpart");
+var hammertime = new Hammer(myElement);
+    hammertime.get('pinch').set({ enable: true });
+
+var queryDict = {};    //querystring JSON
+    location.search.substr(1).split("&").forEach(function(item) {
+        queryDict[item.split("=")[0]] = item.split("=")[1]
+    })
+
+var scrollPercent;    
+
+
+$('#scrollpart').bind('touchstart', function(ev) {  //these two make it so pinch isn't blocking.
+    if (ev.originalEvent.touches.length===1){
+        hammertime.get('pinch').set({ enable: false});
+    }else{hammertime.get('pinch').set({ enable: true});}
+});
+
+
+$('#scrollpart').bind('touchend', function(ev) {
+    hammertime.get('pinch').set({ enable: false});
+});
+ 
+    
+    
+hammertime.on('pinchin', function(ev) {
+    fontsize=fontsize-(Math.abs(ev.overallVelocity*5));
+    if (fontsize<2){fontsize=2};
+    //$("#scrollpart").css("font-size", fontsize + "vw")
+    socket.emit('fontsize', {
+        fontsize: fontsize
+	});
+    console.log(ev);
+});
+
+
+hammertime.on('pinchout', function(ev) {
+    fontsize=fontsize+(Math.abs(ev.overallVelocity*5));
+    //$("#scrollpart").css("font-size", fontsize + "vw")
+    socket.emit('fontsize', {
+        fontsize: fontsize
+	});
+	console.log(ev);
+});
+
+
+
+
+var scrollPage = function(){
+    var gutterPercentage = window.innerHeight /$("#scrollpart").height();
+    var finalHeight=$("#scrollpart").height();
+    var remainder=finalHeight -$('body').scrollTop();
+    var percentageDone = 1-(remainder/finalHeight);
+    var percentageLeft = remainder/finalHeight;
+    socket.emit('scrollPos', {
+			position: percentageDone,
+			gutterPercentage: gutterPercentage
+		});
+   
+};
+
+
+var lockOrientation= function() {
+    if (typeof screen.orientation !== "undefined" && screen.orientation.lock !== "undefined" ){
+        screen.orientation.lock('portrait-primary');
+    } else if(window.screen.lockOrientation){
+        window.screen.lockOrientation('portrait-primary');
+    } else if(window.screen.mozLockOrientation){
+        window.screen.mozLockOrientation('portrait-primary');
+    } else if (window.screen.msLockOrientation){
+        window.screen.msLockOrientation('portrait-primary');
+    }
+};
+
+
+var fullScreen = function(){
+      if(document.documentElement.requestFullscreen) {
+         document.documentElement.requestFullscreen();
+      } else if(document.documentElement.webkitRequestFullscreen) {
+         document.documentElement.webkitRequestFullscreen();
+      } else if(document.documentElement.mozRequestFullScreen) {
+         document.documentElement.mozRequestFullScreen();
+      } else if(document.documentElement.msRequestFullscreen) {
+         document.documentElement.msRequestFullscreen();
+      }
+
+		setTimeout(function(){
+			lockOrientation();
+			},1); //you've got to be kidding me. This fixes Firefox orientation lock #haxx #findabetterway
+		
+};
+
+
+
+
+
+$( document ).ready(function() {
+
+    $.get("script.txt", function(data){
+      $("#scrollpart").text(data);
+    });
+    
+    $( window ).scroll(function() {
+      if(queryDict.control){
+        scrollPage(); //scroll for everyone the page if control=true in your querystring
+        }
+    });    
+    
+    socket.on('bScrollPos', function(data) { //listen for position changes
+        scrollPercent=data.position;
+    	if (!queryDict.control){ //not controlling, passive terminal
+    	    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+    	    var myPos = finalHeight * scrollPercent;
+    	    $('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 
+        }    	    
+    });
+
+    socket.on('bfontsize', function(data) { //listen for position changes
+        $("#scrollpart").css("font-size", data.fontsize + "vw")
+       	    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+    	    var myPos = finalHeight * scrollPercent;
+    	    $('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 
+    });
+
+
+
+});     
+        
+</script>

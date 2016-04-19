@@ -1,0 +1,31 @@
+{
+  "name": "socket-prompter",
+  "preferGlobal": false,
+  "version": "1.0.0",
+  "description": "Socket.io-based teleprompter",
+  "contributors": [
+    {
+      "name": "Ross Brackett",
+      "email": "prompter@presentation.fyi"
+    }
+  ],
+  "main": "server.js",
+  "bin": {
+    "socket": "server.js"
+  },
+  "engines" : {
+    "node": "4.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "socket.io": "1.4.2",
+    "express": "4.13.3"
+  },
+  "keywords": [
+    "teleprompter"
+  ],
+  "author": "Karaoke Research Council <krc@brassrocket.com>",
+  "license": "GPL-3.0"
+}
