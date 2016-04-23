@@ -95,7 +95,7 @@ PowerPoint
 
 
 
-So, if you haven’t already guessed why the graphics on this edition of Presentation Nation are so old school, the reason is this: we’re using the very first version PowerPoint to do all the titles for this episode! In fact, you’re looking at a PowerPoint 1.0 slideshow right now, running on a virtual Macintosh on my laptop right now. 
+So, if you haven’t already guessed why the graphics on your screen today are so old school, the reason is this: we’re using the very first version PowerPoint to do all the titles for this episode! In fact, you’re looking at a PowerPoint 1.0 slideshow right now, running on a virtual Macintosh on my laptop.
 
 
 (in second window)
@@ -137,6 +137,9 @@ Sat. June 25, 2016 at 5:30 PM
 
 At Portland Community Media
 2766 NE MLK Jr. Blvd, Portland OR
+
+
+-Socketprompter! http://karaokeresearch.github.io
 
 
 CC-by credits for the two incompetech songs
