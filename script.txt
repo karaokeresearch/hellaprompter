@@ -1,24 +1,16 @@
-﻿Song: “The Curtain Rises”
-Card:
-The following program contains material which may be offensive to some viewers or may be inappropriate for viewing by children.
+﻿The following program contains material which may be offensive to some viewers or may be inappropriate for viewing by children.
 
 
-Music:
-"Take a Chance"
-
-
-
-
-The Karaoke Research Council presents… (ding!)
+Music cue!
 
 
 Saturday, April 23, 2016
 Live from Studio A at Portland Community Media
 It’s Presentation Nation!
-Tonight’s show:
-A presentation by David Garrett
-Musical guest Volcanic Pinnacles
-And your host ROSS BRACKETT!
+Tonight’s show features a presentation by David Garrett
+Our musical guest is Volcanic Pinnacles
+And your host…
+ ROSS BRACKETT!
 
 
 (Ross runs out)
@@ -28,22 +20,21 @@ Haha all right!
 Welcome, one and all to the premiere episode of the Karaoke Research Council’s brand new show, Presentation Nation. I am your host, Ross Brackett. 
 
 
-We’ve been spending the last few months scouring Portland’s meetup scene to find you the best presentations you may have missed! From Javascript to jam-making, Budget reports to beat making, the automation tool Puppet to sock puppet construction... every month, Portlanders labor for thousands of hours to make fantastic, information-packed presentations that only get shown to a select few peers before being tossed to the wind. Well, no longer! Your presentations are cool, Portland, and it’s time we documented them. 
+Portland loves presentations! And not just in meetings at work! If you've ever visited meetup.com, you know there's hundreds of gatherings every month in the greater Portland area where nerds, hobbyists, and fanatics of all sorts meet, greet, eat, and almost inevitably sit and watch a slideshow presentation related to the topic at hand. 
 
 
-It is indeed the mission of Presentation Nation to document this underground, under-appreciated artform one presentation at a time. Combine that with some of the wildest bands around - Volcanic Pinnacles is our musical guest today- and you’ve got the makings of an engrossing half-hour of television, which is what we hope to bring you tonight!
+The folks who makes these presentations, the presenters, labor for hours upon hour to make information-packed presentations, show them to a select group of peers, and then toss 'em to the wind. Well, no longer! Your presentations are cool, Portland. It's our mission to catalog this underground, under-appreciated artform one presentation at a time. Combine that with some of the wildest bands around - Volcanic Pinnacles is our musical guest today- and you’ve got the makings of a monthly half-hour of television unlike any you've ever seen! 
 
 
-And on that note, Let’s jump right in with our first presentation… ever! I saw this presentation for the first time about a month ago and thought it was awesome, so I invited him here tonight, and he said yes, ladies and gentlemen, David Garrett!
+And on that note, Let’s jump right in with our first presentation… ever! I saw David present on this topic for the first time about a month ago and thought it was awesome, so I invited him here tonight! Ladies and gentlemen, David Garrett!
 
 
-Now, David, what will you be presenting on tonight?
-(he says)
-OK, and are you ready?
+-What is the presentation?
+-Is he ready?
 (yes, or stall)
 
 
-OK, then I’ll leave you to it. One more round of applause for David Garrett!
+OK, then I’ll leave you to it. David. Once again, presenting on Artificial Intelligence libraries in Javascript, David Garrett.
 
 
 
@@ -51,9 +42,12 @@ OK, then I’ll leave you to it. One more round of applause for David Garrett!
 (David presents)
 
 
+-Ask if he has any plugs
 
 
-Fantastic, David, thank you. If you have or know about a great presentation that you think everyone should know about, email us at talk@presentation.fyi or give us a call at (503) 974-4839 and tell us all about it
+
+
+Fantastic, David, thank you. If you have or know about a great presentation that you think everyone should know about, email us at ideas@presentation.fyi or give us a call at (503) 974-4839 and tell us all about it
 
 
 If you’d like to be in our audience, come to one of our meetups! Go to http://presentation.fyi and you’ll be redirected right to our page on meetup.com to RSVP.
@@ -68,12 +62,10 @@ At Portland Community Media
 2766 NE MLK Jr. Blvd, Portland OR
 
 
-All right, if you’re just tuning in, this is Presentation Nation, I’m your host Ross Brackett. I am so pleased now to announce our musical guest. You can find them online at https://volcanicpinnacles.bandcamp.com/, (and any upcoming shows) - two very nice individuals who are also capable of generating unfathomable consciousness-bending sounds in real time, ladies and gentlemen, Volcanic Pinnacles!
+All right, if you’re just tuning in, this is Presentation Nation, I’m your host Ross Brackett. I am so pleased now to announce our musical guest. You can find them online at https://volcanicpinnacles.bandcamp.com/, (add any upcoming shows) - two very nice individuals who are also capable of generating unfathomable consciousness-bending sounds in real time, ladies and gentlemen, Volcanic Pinnacles!
 
 
 (band plays)
-
-
 
 
 Volcanic Pinnacles, ladies and gentlemen! (Shake hands)
@@ -92,29 +84,41 @@ PowerPoint: Origins
 
 
 
-* PowerPoint
-   * Most commonly-used presentation software
-   * Originally called Presenter
-   * Created by Forethought, Incorporated
-* PowerPoint
-   * Designed for the original Apple Macintosh
-   * Renamed from Presenter to PowerPoint in 1987
-   * Forethought Inc. purchased by Microsoft the same year
-
-
-So, if you haven’t already guessed why the graphics on this edition of Presentation Nation are so old school, the reason is this: we’re using PowerPoint to do all the titles for this episode! In fact, you’re looking at a PowerPoint 1.0 slideshow right now, running on a virtual Macintosh on my laptop right now. 
-
-
-So, let’s do a basic tour of what PowerPoint 1.0’s capable of and then we’ll show you how to install it on your own system. 
-
-
 PowerPoint
-Importing graphics
-Importing assets from your PC
-How to get your own copy and set up your own virtual Mac to run it
-Or if you just want to play around with MacOS, show the address:
+-Most commonly-used presentation software
+-Originally called Presenter
+-Created by Forethought, Incorporated
+-Designed for the original Apple Macintosh
+-Renamed from Presenter to PowerPoint in 1987
+-Forethought Inc. purchased by Microsoft the same year
 
 
+
+
+So, if you haven’t already guessed why the graphics on this edition of Presentation Nation are so old school, the reason is this: we’re using the very first version PowerPoint to do all the titles for this episode! In fact, you’re looking at a PowerPoint 1.0 slideshow right now, running on a virtual Macintosh on my laptop right now. 
+
+
+(in second window)
+-Basic tour of what PowerPoint can do 
+
+
+-"Try it yourself" 
+
+
+-Close that second window and boot up
+
+
+-We'll Import a jpeg into PowerPoint 1.0 as a way to show off all the features
+
+
+-convert.exe -monochrome -compress none powerpoint.png powerpoint.tif
+-ImportFL
+-"Open As" into Photoshop to get around Resource Fork issues
+-Export as PICT format
+"Paste As" into PowerPoint
+
+
+-If you just want to play around with MacOS without a bunch of hassle, you can do it in your browser!
 
 
 Well, I hope you enjoyed this episode of Presentation Nation

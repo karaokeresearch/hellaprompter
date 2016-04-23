@@ -75,6 +75,9 @@ var queryDict = {};    //querystring JSON
 var scrollPercent;    
 
 
+
+
+
 $('#scrollpart').bind('touchstart', function(ev) {  //these two make it so pinch isn't blocking.
     if (ev.originalEvent.touches.length===1){
         hammertime.get('pinch').set({ enable: false});
@@ -140,6 +143,14 @@ var lockOrientation= function() {
 
 
 var fullScreen = function(){
+
+
+	setTimeout(function(scrollPercent){ //have to do this because fullscreen scrolls to top of screen for some reason
+	    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+	    var myPos = finalHeight * scrollPercent;
+	    $('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 			
+	},100,scrollPercent); 
+
       if(document.documentElement.requestFullscreen) {
          document.documentElement.requestFullscreen();
       } else if(document.documentElement.webkitRequestFullscreen) {
@@ -150,10 +161,14 @@ var fullScreen = function(){
          document.documentElement.msRequestFullscreen();
       }
 
-		setTimeout(function(){
-			lockOrientation();
-			},1); //you've got to be kidding me. This fixes Firefox orientation lock #haxx #findabetterway
-		
+	setTimeout(function(){
+		lockOrientation();
+		},1); //you've got to be kidding me. This fixes Firefox orientation lock #haxx #findabetterway
+	
+
+    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+    var myPos = finalHeight * scrollPercent;
+
 };
 
 
