@@ -19,7 +19,7 @@ Basics of how to use socketprompter
   
 * Connect any teleprompter browser windows to http://yourserver:8080
 * Need to flip text? http://yourserver:8080?flip=horizontal
-* Connect your phone's browser to http://yourserver:8080?control=true
+* To control the prompter, connect your phone or PC's browser to http://yourserver:8080?control=true
 * Tap to go fullscreen
 * Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
 * Scroll, and all connected terminals will scroll with you. The top of your phone is the top of your screen
