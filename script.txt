@@ -1,148 +1,35 @@
-﻿The following program contains material which may be offensive to some viewers or may be inappropriate for viewing by children.
-
-
-Music cue!
-
-
-Saturday, April 23, 2016
-Live from Studio A at Portland Community Media
-It’s Presentation Nation!
-Tonight’s show features a presentation by David Garrett
-Our musical guest is Volcanic Pinnacles
-And your host…
- ROSS BRACKETT!
-
-
-(Ross runs out)
-
-
-Haha all right!
-Welcome, one and all to the premiere episode of the Karaoke Research Council’s brand new show, Presentation Nation. I am your host, Ross Brackett. 
-
-
-Portland loves presentations! And not just in meetings at work! If you've ever visited meetup.com, you know there's hundreds of gatherings every month in the greater Portland area where nerds, hobbyists, and fanatics of all sorts meet, greet, eat, and almost inevitably sit and watch a slideshow presentation related to the topic at hand. 
-
-
-The folks who makes these presentations, the presenters, labor for hours upon hour to make information-packed presentations, show them to a select group of peers, and then toss 'em to the wind. Well, no longer! Your presentations are cool, Portland. It's our mission to catalog this underground, under-appreciated artform one presentation at a time. Combine that with some of the wildest bands around - Volcanic Pinnacles is our musical guest today- and you’ve got the makings of a monthly half-hour of television unlike any you've ever seen! 
-
-
-And on that note, Let’s jump right in with our first presentation… ever! I saw David present on this topic for the first time about a month ago and thought it was awesome, so I invited him here tonight! Ladies and gentlemen, David Garrett!
-
-
--What is the presentation?
--Is he ready?
-(yes, or stall)
-
-
-OK, then I’ll leave you to it. David. Once again, presenting on Artificial Intelligence libraries in Javascript, David Garrett.
-
-
-
-
-(David presents)
-
-
--Ask if he has any plugs
-
-
-
-
-Fantastic, David, thank you. If you have or know about a great presentation that you think everyone should know about, email us at ideas@presentation.fyi or give us a call at (503) 974-4839 and tell us all about it
-
-
-If you’d like to be in our audience, come to one of our meetups! Go to http://presentation.fyi and you’ll be redirected right to our page on meetup.com to RSVP.
-
-
-Here’s our next two taping dates:
-Sat. May 28, 2016 at 5:30 PM
-Sat. June 25, 2016 at 5:30 PM 
-
-
-At Portland Community Media
-2766 NE MLK Jr. Blvd, Portland OR
-
-
-All right, if you’re just tuning in, this is Presentation Nation, I’m your host Ross Brackett. I am so pleased now to announce our musical guest. You can find them online at https://volcanicpinnacles.bandcamp.com/, (add any upcoming shows) - two very nice individuals who are also capable of generating unfathomable consciousness-bending sounds in real time, ladies and gentlemen, Volcanic Pinnacles!
-
-
-(band plays)
-
-
-Volcanic Pinnacles, ladies and gentlemen! (Shake hands)
-
-
-All right, if you’re just tuning in, this is Presentation Nation, I’m your host Ross Brackett.
-
-
-For our final presentation of the evening, I’ll be giving a little presentation of my own, and perhaps a little walk down memory lane for those of you have been doing this for a while. I call it:
-
-
-PowerPoint: Origins
-
-
-
-
-
-
-PowerPoint
--Most commonly-used presentation software
--Originally called Presenter
--Created by Forethought, Incorporated
--Designed for the original Apple Macintosh
--Renamed from Presenter to PowerPoint in 1987
--Forethought Inc. purchased by Microsoft the same year
-
-
-
-
-So, if you haven’t already guessed why the graphics on your screen today are so old school, the reason is this: we’re using the very first version PowerPoint to do all the titles for this episode! In fact, you’re looking at a PowerPoint 1.0 slideshow right now, running on a virtual Macintosh on my laptop.
-
-
-(in second window)
--Basic tour of what PowerPoint can do 
-
-
--"Try it yourself" 
-
-
--Close that second window and boot up
-
-
--We'll Import a jpeg into PowerPoint 1.0 as a way to show off all the features
-
-
--convert.exe -monochrome -compress none powerpoint.png powerpoint.tif
--ImportFL
--"Open As" into Photoshop to get around Resource Fork issues
--Export as PICT format
-"Paste As" into PowerPoint
-
-
--If you just want to play around with MacOS without a bunch of hassle, you can do it in your browser!
-
-
-Well, I hope you enjoyed this episode of Presentation Nation
-
-
-Once again, if you have or know about a presentation that you think everyone should know about, email us at talk@presentation.fyi or give us a call at (503) 974-4839 and tell and tell us all about it 
-
-
-...or just come to one of our meetups! Go to http://presentation.fyi and you’ll be redirected right to our page on meetup.com to RSVP.
-
-
-Here’s our next two taping dates:
-Sat. May 28, 2016 at 5:30 PM
-Sat. June 25, 2016 at 5:30 PM 
-
-
-At Portland Community Media
-2766 NE MLK Jr. Blvd, Portland OR
-
-
--Socketprompter! http://karaokeresearch.github.io
-
-
-CC-by credits for the two incompetech songs
-
-
-THIS PROGRAM WAS PRODUCED THROUGH THE FACILITIES OF PORTLAND COMMUNITY MEDIA, PORTLAND OREGON 2016
+﻿To be, or not to be—that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune
+Or to take arms against a sea of troubles
+And by opposing end them. To die, to sleep—
+No more—and by a sleep to say we end
+The heartache, and the thousand natural shocks
+That flesh is heir to. 'Tis a consummation
+Devoutly to be wished. To die, to sleep—
+To sleep—perchance to dream: ay, there's the rub,
+For in that sleep of death what dreams may come
+When we have shuffled off this mortal coil,
+Must give us pause. There's the respect
+That makes calamity of so long life.
+For who would bear the whips and scorns of time,
+Th' oppressor's wrong, the proud man's contumely
+The pangs of despised love, the law's delay,
+The insolence of office, and the spurns
+That patient merit of th' unworthy takes,
+When he himself might his quietus make
+With a bare bodkin? Who would fardels bear,
+To grunt and sweat under a weary life,
+But that the dread of something after death,
+The undiscovered country, from whose bourn
+No traveller returns, puzzles the will,
+And makes us rather bear those ills we have
+Than fly to others that we know not of?
+Thus conscience does make cowards of us all,
+And thus the native hue of resolution
+Is sicklied o'er with the pale cast of thought,
+And enterprise of great pitch and moment
+With this regard their currents turn awry
+And lose the name of action. — Soft you now,
+The fair Ophelia! — Nymph, in thy orisons
+Be all my sins remembered.

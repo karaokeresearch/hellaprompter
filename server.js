@@ -5,13 +5,13 @@
 var express = require('express'),
     http = require('http'),
     app = express(),
-    server = http.createServer(app).listen(process.env.PORT||80),
+    server = http.createServer(app).listen(process.env.PORT||8080),
     io = require('socket.io').listen(server, {
         log: false
     });
 
-var scrollPos;
-var fontSize=11;
+var scrollPos=0;
+var fontSize=7;
 
 app.use(express.static(__dirname + '/')); //Where the static files are loaded from
 
@@ -19,15 +19,15 @@ app.use(express.static(__dirname + '/')); //Where the static files are loaded fr
 //************** LISTENERS ********************
 io.sockets.on('connection', function (socket) {
     // Welcome messages on connection to just the connecting client
-    socket.emit('bScrollPos', {
-        position: scrollPos
-    });
     
     socket.emit('bfontsize', {
         fontsize: fontSize
     });
 
-
+	  socket.emit('bScrollPos', {
+      position: scrollPos
+    });
+    
 
     socket.on('scrollPos', function (data) { //user is sending a scroll value
             scrollPos= data.position;
@@ -41,6 +41,8 @@ io.sockets.on('connection', function (socket) {
     });
 
 
+
+
 });
  
 
@@ -48,4 +50,4 @@ io.sockets.on('connection', function (socket) {
 }());
 
 
-console.log("LOADED");
+console.log("Loaded on port 8080");

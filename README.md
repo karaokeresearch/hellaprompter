@@ -1,4 +1,5 @@
 # socketprompter
+by Ross Brackett
 Socketprompter is a simple but effective method for controlling an unlimited number of browser-based teleprompters from your phone or a PC. It's written in HTML5/Javascript and uses socket.io as a go-between
 
 Basics of how to use socketprompter
@@ -14,10 +15,12 @@ Basics of how to use socketprompter
        node server.js
        
   
-* Connect any teleprompter browser windows to http://yourserver
-* Connect your phone's browser to http://yourserver/?control=true
+* Connect any teleprompter browser windows to http://yourserver:8080
+* Need to flip text? http://yourserver:8080?flip=horizontal
+* Connect your phone's browser to http://yourserver:8080/?control=true
 * Tap to go fullscreen
-* Pinch to zoom text size
+* Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
 * Scroll, and all connected terminals will scroll with you. The top of your phone is the top of your screen
+* If you're in control mode, a grey line appears on the screen. Above the line is a 16x9 aspect ration landscape canvas, defining a good-guess safe area for the most common scenario I can imagine
 
-Socketprompter is a project of the Karaoke Research Council and it's used on Presentation Nation as our teleprompter software of choice.
+There's a weird bug if you open a control and regular window in the same Chrome user instance (one in an incognito window is fine) performance tanks because the controlling Chrome won't emit as much. No idea why.

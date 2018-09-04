@@ -1,27 +1,28 @@
 {
   "name": "socketprompter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karaokeresearch/socketprompter.git"
+  },
   "preferGlobal": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Socket.io-based teleprompter",
   "contributors": [
     {
       "name": "Ross Brackett",
-      "email": "prompter@presentation.fyi"
+      "email": "krc@brassrocket.com"
     }
   ],
   "main": "server.js",
   "bin": {
     "socket": "server.js"
   },
-  "engines" : {
-    "node": "4.2.4"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "socket.io": "1.4.2",
-    "express": "4.13.3"
+    "socket.io": "2.1.1",
+    "express": "4.16.3"
   },
   "keywords": [
     "teleprompter"
