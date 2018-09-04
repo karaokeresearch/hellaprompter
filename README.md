@@ -2,7 +2,7 @@
 
 by Ross Brackett
 
-Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to unlimited prompter displays. No app required, all you need is node and a browser. Supports mirrored text!
+Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to an unlimited number of prompter displays. No app required, all you need is node and a browser. Supports mirrored text!
 
 Basics of how to use socketprompter
 * Download it
