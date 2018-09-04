@@ -1,5 +1,7 @@
 # socketprompter
+
 by Ross Brackett
+
 Socketprompter is a simple but effective method for controlling an unlimited number of browser-based teleprompters from your phone or a PC. It's written in HTML5/Javascript and uses socket.io as a go-between
 
 Basics of how to use socketprompter
