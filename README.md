@@ -2,7 +2,7 @@
 
 by Ross Brackett
 
-Socketprompter is a simple but effective method for controlling an unlimited number of browser-based teleprompters from your phone or a PC. It's written in HTML5/Javascript and uses socket.io as a go-between
+Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to unlimited prompter displays. No app required, all you need is node and a browser. Supports mirrored text!
 
 Basics of how to use socketprompter
 * Download it
@@ -19,7 +19,7 @@ Basics of how to use socketprompter
   
 * Connect any teleprompter browser windows to http://yourserver:8080
 * Need to flip text? http://yourserver:8080?flip=horizontal
-* Connect your phone's browser to http://yourserver:8080/?control=true
+* Connect your phone's browser to http://yourserver:8080?control=true
 * Tap to go fullscreen
 * Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
 * Scroll, and all connected terminals will scroll with you. The top of your phone is the top of your screen
