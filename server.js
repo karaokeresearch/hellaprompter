@@ -66,7 +66,7 @@ Object.keys(myInterfaces).forEach(function(key) { //what IP is this server runni
 		var theAddress = myInterfaces[key][i].address;
 		if (theAddress.match(/\./)){//anti-IPv6 bias rears its head
   		if (theAddress.match(/^(?!127).*$/)){//first time I used negative lookahead in my life. No clue how it works.
-  			console.log("https://" + theAddress +":8080");
+  			console.log("http://" + theAddress +":8080");
   		}
   	}
   }
