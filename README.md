@@ -16,7 +16,7 @@ Basics of how to use socketprompter
 
        node server.js
        
-##  
+
 * Connect any teleprompter browser windows to http://yourserver:8080
 * Need to flip text for a mirrored prompter? http://yourserver:8080?flip=horizontal
 * You can also flip vertical or both
