@@ -190,7 +190,7 @@ $( document ).ready(function() {
       $("#scrollpart").text(data);
     });   
     if(queryDict.control){
-    $("#letterbar").css("visibility", "visible");
+    $("#letterbar").css("visibility", "visible");//that grey bar that shows the 16:9 workspace
   	}
     $( window ).scroll(function() {
       if(queryDict.control){
@@ -231,11 +231,26 @@ $( document ).ready(function() {
         $("#scrollpart").css("font-size", data.fontsize + "vw");
     });
 
+		socket.on('breload', function(data) {
 
+			$.get("script.txt", function(data){
+	      $("#scrollpart").text(data);
+	    }); 
+	    
+	    console.log("reloading script");
+				
+		});
+		
+		
 	$(document).keypress(function(e) {
 	    //console.log(e.which);
 	    if(e.which==45 ||e.which==95){manualFontSize(false)}
 	    if(e.which==43 ||e.which==61){manualFontSize(true)}
+	    if((e.which==82 || e.which==114) &&(queryDict.control)){
+	    	socket.emit('reload', {
+            reload: true
+    		});
+    	}
 	});
 
 

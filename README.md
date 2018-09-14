@@ -18,11 +18,15 @@ Basics of how to use socketprompter
        
   
 * Connect any teleprompter browser windows to http://yourserver:8080
-* Need to flip text? http://yourserver:8080?flip=horizontal
+* Need to flip text for a mirrored prompter? http://yourserver:8080?flip=horizontal
+* You can also flip vertical or both
 * To control the prompter, connect your phone or PC's browser to http://yourserver:8080?control=true
 * Tap to go fullscreen
+
+In control mode:
+* A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area
+* Scroll the window, and all connected terminals will scroll with you. The top of your phone is the top of your screen
 * Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
-* Scroll, and all connected terminals will scroll with you. The top of your phone is the top of your screen
-* If you're in control mode, a grey line appears on the screen. Above the line is a 16x9 aspect ration landscape canvas, defining a good-guess safe area for the most common scenario I can imagine
+* If you update script.txt, type "r" and all terminals will refresh with the update text without having to manually refresh
 
 There's a weird bug if you open a control and regular window in the same Chrome user instance (one in an incognito window is fine) performance tanks because the controlling Chrome won't emit as much. No idea why.

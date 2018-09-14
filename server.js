@@ -39,6 +39,11 @@ io.sockets.on('connection', function (socket) {
             fontSize=data.fontsize;
             io.sockets.emit('bfontsize', data); 
     });
+    
+    socket.on('reload', function (data) { //user is sending a scroll value
+            io.sockets.emit('breload', data); 
+            console.log ("reloading script");
+    });
 
 
 
@@ -49,5 +54,22 @@ io.sockets.on('connection', function (socket) {
 
 }());
 
+myInterfaces = require('os').networkInterfaces();
 
-console.log("Loaded on port 8080");
+//console.log(myInterfaces);
+
+console.log("Running on:\n");
+
+Object.keys(myInterfaces).forEach(function(key) { //what IP is this server running on?
+	
+	for (var i=0; i<myInterfaces[key].length; i++){
+		var theAddress = myInterfaces[key][i].address;
+		if (theAddress.match(/\./)){//anti-IPv6 bias rears its head
+  		if (theAddress.match(/^(?!127).*$/)){//first time I used negative lookahead in my life. No clue how it works.
+  			console.log("https://" + theAddress +":8080");
+  		}
+  	}
+  }
+  
+  
+});
