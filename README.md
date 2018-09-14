@@ -6,7 +6,7 @@ Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Contro
 
 Basics of how to use socketprompter
 * Download it
-* Modify script.txt to your own teleprompter script - use http://dan.hersam.com/tools/smart-quotes.html to remove any funny looking characters if you pasted from Word or Google Docs. Download-as Plain Text from Google Docs and there should be no problem.
+* Modify script.txt to your own teleprompter script - use http://dan.hersam.com/tools/smart-quotes.html to remove any funny-looking characters if you pasted from Word or Google Docs. But if you just Download-as Plain Text from Google Docs and there should be no problem.
 * Run:
 
        npm install
@@ -16,12 +16,12 @@ Basics of how to use socketprompter
 
        node server.js
        
-  
+##  
 * Connect any teleprompter browser windows to http://yourserver:8080
 * Need to flip text for a mirrored prompter? http://yourserver:8080?flip=horizontal
 * You can also flip vertical or both
-* To control the prompter, connect your phone or PC's browser to http://yourserver:8080?control=true
 * Tap to go fullscreen
+* To control the prompter, connect your phone or PC's browser to http://yourserver:8080?control=true
 
 In control mode:
 * A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area
