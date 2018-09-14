@@ -2,7 +2,7 @@
 
 by Ross Brackett
 
-Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to an unlimited number of prompter displays. No app required, all you need is node and a browser. Supports mirrored text!
+Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to an unlimited number of prompter displays. No app required, all you need is node and a browser or two. Supports mirrored text!
 
 Basics of how to use socketprompter
 * Download it
@@ -17,16 +17,16 @@ Basics of how to use socketprompter
        node server.js
        
 
-* Connect any teleprompter browser windows to http://yourserver:8080
-* Need to flip text for a mirrored prompter? http://yourserver:8080?flip=horizontal
-* You can also flip vertical or both
+* Connect any teleprompter browser windows to http://yourIPaddress:8080
+* Need to flip text for a mirrored prompter? http://yourIPaddress:8080?flip=horizontal
+* You can also ?flip=vertical or ?flip=both
 * Tap to go fullscreen
-* To control the prompter, connect your phone or PC's browser to http://yourserver:8080?control=true
+* To control the prompter, connect your phone or PC's browser to http://yourIPaddress:8080?control=true or http://localhost:8080?control=true
 
 In control mode:
 * A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area
 * Scroll the window, and all connected terminals will scroll with you. The top of your phone is the top of your screen
 * Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
-* If you update script.txt, type "r" and all terminals will refresh with the update text without having to manually refresh
+* If you update script.txt, type "r" and all terminals will refresh with the updated text without having to manually refresh
 
 There's a weird bug if you open a control and regular window in the same Chrome user instance (one in an incognito window is fine) performance tanks because the controlling Chrome won't emit as much. No idea why.
