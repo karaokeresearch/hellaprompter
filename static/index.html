@@ -1,0 +1,163 @@
+<html>
+    <head><title>Hellaprompter</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#999999">
+<meta name="theme-color" content="#ffffff">    
+        </head>
+<body>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<style>
+
+@font-face {
+    font-family: "DejaVu Sans Mono";
+    src: url('DejaVuSansMono.ttf') format('truetype');
+}
+
+
+
+body{
+	font-family: "DejaVu Sans Mono";
+  font-size: 3vh;
+	color: #000000;
+	background-color: #FFFFFF;
+	margin: 2vh;
+}
+
+
+.select-css {
+	
+	font-family: "DejaVu Sans Mono";
+  font-size: 3vh;
+	
+}
+
+#theURL {
+	
+	font-family: "DejaVu Sans Mono";
+  font-size: 2vh;
+	width: 40vh;
+  max-width: 40vh;
+}
+
+
+#destination{
+	max-width: 35vh;	
+}
+
+#qrcode{	
+	background-size: cover;
+	display: inline-block;
+	width: 40vh;
+	height: 40vh;
+}
+ 
+</style>
+<span style="font-size:4vh">Hellaprompter<br>Launcher</span><br><br>
+
+<select id="destination" class="select-css">
+	<option value="">Launcher</option>
+  <option value="p.html?control=true">Controller</option>
+  <option value="p.html">Prompter</option>
+  <option value="p.html?flip=vertical">Prompter (flip vertical)</option>
+  <option value="p.html?flip=horizontal">Prompter (flip horizontal)</option>
+  <option value="p.html?flip=both">Prompter (flip both)</option>  
+  <option value="editor.html">Editor</option>
+  <option value="help.html">Help</option>
+</select>
+
+<button id="go" type="button" class="select-css">Go!</button>
+<br><br>
+<select id="ips" class="select-css"></select> 
+
+
+<br><br>
+<div id="qrcode"></div>
+<br>
+<input id="theURL" style="width:65vh"></input>
+<br><br><button id="copy" type="button" class="select-css">Copy URL</button>
+
+
+
+<script type="text/javascript">
+
+var ips;
+var theURL;
+var serverPort;
+
+var changeQR = function(){
+	theURL="http://" + $("#ips").val() +":" + serverPort+ "/" + $("#destination").val();
+	$("#qrcode").css("background-image", 'url("/qrcode.svg?url='+ theURL +'")');
+  $("#theURL").val(theURL);
+	 
+}
+
+
+function copyToMemory() {
+  /* Get the text field */
+  var copyText =document.getElementById("theURL");
+  copyText.select();
+  document.execCommand("copy");
+}
+
+
+
+
+$( document ).ready(function() {
+
+		var socket = io.connect();	
+		
+		socket.on('ips', function(data) { //listen for position changes
+			ips=data.ips;
+	    
+	    for (var i=0; i<ips.length; i++){
+	    	console.log (ips[i][0]);
+	    	$('#ips').append(new Option(ips[i][0], ips[i][0], ips[i][1], ips[i][1]));
+	    }
+
+	 		changeQR();
+    });
+    
+    socket.on('serverPort', function(data) { //listen for position changes
+			serverPort=data.serverPort;
+
+			changeQR();	  
+    });
+    
+
+
+$( "#ips" ).change(function() {
+  changeQR();
+});
+
+
+$( "#destination" ).change(function() {
+  changeQR();
+});
+		
+$( "#id" ).change(function() {
+  changeQR();
+});
+
+$( "#go" ).click(function() {
+  window.location.href = theURL;
+});
+
+
+$( "#copy" ).click(function() {
+  copyToMemory();
+});
+
+
+});
+
+
+
+</script>
+</body>
+</html>

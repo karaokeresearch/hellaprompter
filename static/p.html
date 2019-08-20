@@ -1,7 +1,11 @@
 <html>
-    <head><title>socketprompter</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <head><title>Hellaprompter</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#999999">
+<meta name="theme-color" content="#ffffff">  
         
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         </head>
@@ -12,20 +16,27 @@
 <style>
 
 @font-face {
-    font-family: Bitstream Vera Sans Mono;
-    src: url('VeraMono.eot?') format('embedded-opentype'),
-    url('VeraMono.ttf') format('truetype');
+    font-family: "DejaVu Sans Mono";
+    src: url('DejaVuSansMono.ttf') format('truetype');
+    
 }
 
+
 #scrollpart {
-        font-family: Bitstream Vera Sans Mono;
+        font-family:  "DejaVu Sans Mono";
         font-size: 11vw;
         color: #FFFFFF;
         background-color: #000000;
-        width: 100vw;
+        width: 96vw;
         word-wrap: break-word;
         white-space: pre-wrap;
-       	margin-bottom:300vw;
+       	margin: 0; 
+    padding: 0; 
+       	
+       	padding-left: 2vw;
+       	padding-right: 2vw;
+       	padding-top: 2vw;
+       	padding-bottom: 2vw;
 }
 
 
@@ -45,12 +56,14 @@ body{
 }
 
 
+
 html, body { 
     height: 100%; 
     width: 100%; 
-    background-color: #AAAAAA;
+    background-color: #000000;
     margin: 0; 
-    padding: 0;    
+    padding: 0; 
+    border: 0;   
     }
    
 </style>
@@ -58,17 +71,13 @@ html, body {
 
 <div id="scrollpart" onclick="goFullScreen()">
 </div>
-
 <div id="letterbar"></div>
-<br>
-<!--
-<div id="extragutter" onclick="gofullScreen()"></div>
-</body>
 
--->
 
 
 <script>
+	
+var myPos=0;	
 var socket = io.connect();
 var master=false;
 var fontsize=-1;
@@ -83,7 +92,10 @@ var flippedHorizontal=false;
 //var xmitThrot=0;
 //var lastTimestamp=0;
 var firstScroll=true;
+var loadedScript=false;
 
+
+var bottomGutter= "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
 
 var queryDict = {};    //querystring JSON
@@ -97,7 +109,7 @@ var queryDict = {};    //querystring JSON
 
 var manualFontSize=function(bigger){
 if(bigger){fontsize+=1}else{fontsize-=1};
-  if(queryDict.control){
+  if(queryDict.control){ //control mode
         socket.emit('fontsize', {
             fontsize: fontsize
     	});
@@ -110,18 +122,24 @@ if(bigger){fontsize+=1}else{fontsize-=1};
 
 
 var scrollPage = function(){
-    var gutterPercentage = window.innerHeight /$("#scrollpart").height();
-    var finalHeight=$("#scrollpart").height();
+    var finalHeight=$("#scrollpart").innerHeight();
     var remainder=finalHeight -$('body').scrollTop();
+    
     var percentageDone = 1-(remainder/finalHeight);
     var percentageLeft = remainder/finalHeight;
     //if (Date.now() - xmitThrot >9){
 	    //console.log(percentageDone);
-	    socket.emit('scrollPos', {
-				position: percentageDone
-			});
+	    
+	    if (firstScroll!=true){
+	    	//console.log("emitting " + percentageDone );
+	    	socket.emit('scrollPos', {
+					position: percentageDone
+				});
+			}
+			
 	    //xmitThrot  = Date.now();   
 	  //}
+	  
 };
 
 
@@ -142,7 +160,7 @@ var goFullScreen = function(){
 
 
 	setTimeout(function(scrollPercent){ //have to do this because fullscreen scrolls to top of screen for some reason
-	    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+	    var finalHeight=$("#scrollpart").innerHeight(); // - ($("#scrollpart").height() *data.gutterPercentage);
 	    var myPos = finalHeight * scrollPercent;
 	    $('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 			
 	},100,scrollPercent); 
@@ -158,18 +176,16 @@ var goFullScreen = function(){
          document.documentElement.msRequestFullscreen();
       }
 
-//	setTimeout(function(){
-//	lockOrientation();
-//		},1); //you've got to be kidding me. This fixes Firefox orientation lock #haxx #findabetterway
 	
 
-    var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
-    var myPos = finalHeight * scrollPercent;
+    var finalHeight=$("#scrollpart").innerHeight(); // - ($("#scrollpart").innerHeight() *data.gutterPercentage);
+    //var myPos = finalHeight * scrollPercent;
 
 };
 
 var realignScreen=function(){
-	var finalHeight=$("#scrollpart").height(); // - ($("#scrollpart").height() *data.gutterPercentage);
+	var finalHeight=$("#scrollpart").innerHeight(); // - ($("#scrollpart").innerHeight() *data.gutterPercentage);
+
 
   if (flippedHorizontal==true){
   	myPos= finalHeight- (finalHeight *scrollPercent) - $(window).height();
@@ -177,51 +193,61 @@ var realignScreen=function(){
   else{
   	myPos = finalHeight * scrollPercent;
   }
-  
-
 	    	    
-	$('body').animate({scrollTop: myPos+ "px"}, 0, 'linear');   	    	    
+	//console.log("realignScreen scrolling to " + myPos + "px");
+	$('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 
+
 } 
 
 
 $( document ).ready(function() {
 
-    $.get("script.txt", function(data){
-      $("#scrollpart").text(data);
+    $.get("/script/script.txt", function(data){
+    	
+      $("#scrollpart").text(data+ bottomGutter); 
+      loadedScript=true;
+      if (scrollPercent !=0){//we already have positioning data
+				realignScreen();      	
+      	}
+      
     });   
     if(queryDict.control){
     $("#letterbar").css("visibility", "visible");//that grey bar that shows the 16:9 workspace
   	}
     $( window ).scroll(function() {
       if(queryDict.control){
-        scrollPage(); //scroll the page for everyone if control=true in your querystring
+      	if (firstScroll==true){
+      		firstScroll=false;      		
+      	}else{
+        	scrollPage(); //scroll the page for everyone if control=true in your querystring
+      	}
         }
     });    
     
     
     $(window).resize(function(){
     	realignScreen();
+    	
 		});
     
     socket.on('bScrollPos', function(data) { //listen for position changes
     	
         scrollPercent=data.position;
-       //  if (data.timestamp >lastTimestamp){ //only needed if connection method isn't websockets
-	        //console.log(scrollPercent);
-	    		if (!queryDict.control){ //not controlling, passive terminal	    	    
-	    	  //  console.log("bscrollPos",data);
-	    	    realignScreen();
+        
+      
+	    	    if (firstScroll==true){ //page hasn't yet been scrolled
+       	 		
+       	 			if (loadedScript==true){ //we have positioning data and loaded script so we can position
+	       	 			realignScreen();	       	 			
+	       	 		}  //otherwise the script isn't loaded yet. When it loads, it will see we have scroll data and scroll
+	       	 		  	  	
+       	  	}else{
+       	  			if(queryDict.control==false){ //it's a viewer
+       	  				realignScreen();
+       	  			}
+       	  		}
 	    	    
-	    	    if (firstScroll==true){//first loads are sometimes broke
-       	 
-       	 		setTimeout(function(){realignScreen();},500);
-       	 		firstScroll=false;
-       	  	
-       	  	}
-	    	    
-	        }    	    
-	    	//}else{console.log("data out of order", lastTimestamp, data.timestamp);}
-	   //lastTimestamp=data.timestamp;	
+	      
     });
 
     socket.on('bfontsize', function(data) { //listen for font size changes
@@ -229,12 +255,13 @@ $( document ).ready(function() {
     	//console.log("receiving font size changes");
         fontsize=data.fontsize;
         $("#scrollpart").css("font-size", data.fontsize + "vw");
+        realignScreen();
     });
 
 		socket.on('breload', function(data) {
 
-			$.get("script.txt", function(data){
-	      $("#scrollpart").text(data);
+			$.get("/script/script.txt", function(data){
+	      $("#scrollpart").text(data + bottomGutter);
 	    }); 
 	    
 	    console.log("reloading script");
@@ -246,11 +273,7 @@ $( document ).ready(function() {
 	    //console.log(e.which);
 	    if(e.which==45 ||e.which==95){manualFontSize(false)}
 	    if(e.which==43 ||e.which==61){manualFontSize(true)}
-	    if((e.which==82 || e.which==114) &&(queryDict.control)){
-	    	socket.emit('reload', {
-            reload: true
-    		});
-    	}
+	    
 	});
 
 
@@ -311,10 +334,12 @@ if(queryDict.flip=="both"){
 if (queryDict.control !="true"){
 	$("body").css("overflow-y", "hidden");	//get rid of right scroll bar if you're not transmitting
 }
-
-	 
+else{
+	document.title = "▶ Hellaprompter"; //visual indicator in control bar if you're in prompt mode
+} 
 
 });     
         
 </script>
+</body>
 </html>

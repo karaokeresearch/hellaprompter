@@ -1,12 +1,12 @@
 {
-  "name": "socketprompter",
+  "name": "hellaprompter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/karaokeresearch/socketprompter.git"
+    "url": "https://github.com/karaokeresearch/hellaprompter.git"
   },
   "preferGlobal": false,
-  "version": "1.0.1",
-  "description": "Socket.io-based teleprompter",
+  "version": "2.0.0",
+  "description": "socket.io-based teleprompter",
   "contributors": [
     {
       "name": "Ross Brackett",
@@ -22,11 +22,22 @@
   },
   "dependencies": {
     "socket.io": "2.1.1",
-    "express": "4.16.3"
+    "express": "4.16.3",
+    "open": "6.4.0",
+    "clear": "0.1.0",
+    "env-paths": "2.2.0",
+    "qrcode-svg": "1.0.0",
+    "mkdirp": "0.5.1"
+  },
+  "pkg": {
+    "assets": "static/*"
   },
   "keywords": [
-    "teleprompter"
+    "teleprompter",
+    "hella",
+    "tight",
+    "prompter"
   ],
-  "author": "Karaoke Research Council <krc@brassrocket.com>",
+  "author": "Ross Brackett <krc@brassrocket.com>",
   "license": "GPL-3.0"
 }

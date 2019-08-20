@@ -1,32 +1,34 @@
-# socketprompter
+# Hellaprompter
+The Hella Good Prompter
 
-by Ross Brackett
+Hellaprompter is a free teleprompter that works over wi-fi. You can use a phones or tablets as teleprompter terminals, a control surface, or both at once! It supports mirrored text. It runs right in the browser on any modern phone or laptop, no app required. All you need is a computer to run the web server and a wifi network where devices can talk to each other. I use it at work with an crappy old Android Fire HD tablet running the Silk browser and a $200 Glide Gear teleprompter. Also works great on computers with two or more displays.
 
-Socketprompter is a browser-based teleprompter built on nodejs/socket.io. Control your teleprompter from your phone, your laptop, whatever, and distribute to an unlimited number of prompter displays. No app required, all you need is node and a browser or two. Supports mirrored text!
+## Quick start
+Download the app and run it. 
 
-Basics of how to use socketprompter
-* Download it
-* Modify script.txt to your own teleprompter script - use http://dan.hersam.com/tools/smart-quotes.html to remove any funny-looking characters if you pasted from Word or Google Docs. But if you just Download-as Plain Text from Google Docs and there should be no problem.
-* Run:
+Or, if you downloaded the source code, run `npm install` then `node server.js`
 
-       npm install
+A browser window will immediately launch, opened to the launcher.
+
+### Edit the script
+Select "Editor" from the dropdown, then "Go."  In the editor, paste in your script and format it. Click "Save and update clients" and you're ready to start a teleprompter session. You can return here any time and update your script even in the middle of a session, or just keep a browser window open with the editor loaded if you want to make changes as you go.
+
+### Connect terminals
+If your prompter is a second monitor attached to your primary PC, open a new browser window. If you're using a phone or a tablet as the prompter, IM yourself the URL or scan the QR code. 
+
+You can either control the prompter ("Controller") or open a prompter window ("Prompter".) If you're you're using a teleprompter with a beam splitter, you'll likely be choosing "Prompter (flip horizontal)." Don't forget to disable screensavers (at least until I figure out how to implement nosleep.js.)
 
 
-* Then run:
+## Prompter instructions
+In Prompter mode:
 
-       node server.js
-       
+* Click or tap the screen to go full-screen
 
-* Connect any teleprompter browser windows to http://yourIPaddress:8080
-* Need to flip text for a mirrored prompter? http://yourIPaddress:8080?flip=horizontal
-* You can also ?flip=vertical or ?flip=both
-* Tap to go fullscreen
-* To control the prompter, connect your phone or PC's browser to http://yourIPaddress:8080?control=true or http://localhost:8080?control=true
+In Controller mode:
 
-In control mode:
-* A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area
-* Scroll the window, and all connected terminals will scroll with you. The top of your phone is the top of your screen
-* Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard
-* If you update script.txt, type "r" and all terminals will refresh with the updated text without having to manually refresh
+* Scroll the window, and all connected Prompters will scroll with you. The top of your phone is the top of your screen.
+* Use the + and - buttons if you have a keyboard. Pinch to do the same on mobile (kinda works.)
+* A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area.
 
-There's a weird bug if you open a control and regular window in the same Chrome user instance (one in an incognito window is fine) performance tanks because the controlling Chrome won't emit as much. No idea why.
+## Known bugs
+On some older versions of Chrome (and maybe other browsers) there's a weird bug if you open both a controller and a prompter window in the same Chrome user instance, you get jerky motion, as the controlling Chrome won't emit as much for some reason. You can get around this if you open either your controller window or your prompter window(s) in an incognito window.
