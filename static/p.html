@@ -91,7 +91,8 @@ var hammertime = new Hammer(myElement);
 var flippedHorizontal=false;
 //var xmitThrot=0;
 //var lastTimestamp=0;
-var notYetScrolled=true;
+
+
 var loadedScript=false;
 var receivedScrollData=false;
 
@@ -209,7 +210,7 @@ var realignScreen=function(){
         
       
 	    	    
-       	 			if (loadedScript==true){ //we have positioning data and loaded script so we can position
+       	 			if (loadedScript==true  && queryDict.control!=true){ //we have positioning data and loaded script so we can position
 	       	 			realignScreen();	       	 			
 	       	 		}  //otherwise the script isn't loaded yet. When it loads, it will see we have scroll data and scroll
 	       	 		  	  	
