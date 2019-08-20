@@ -123,7 +123,9 @@ app.get("/qrcode.svg", function(req, res){
 io.sockets.on('connection', function (socket) {
     // Welcome messages on connection to just the connecting client
 
-	socket.emit('ips', {
+
+ socket.on('hello', function (data) { //user is sending a scroll value
+      socket.emit('ips', {
         ips
     });
     
@@ -137,13 +139,13 @@ io.sockets.on('connection', function (socket) {
     });
     
 
-    socket.emit('bfontsize', {
-        fontsize: fontSize
-    });
-
 	  socket.emit('bScrollPos', {
       position: scrollPos
+    });     
+           
+           
     });
+	
     
 
     socket.on('scrollPos', function (data) { //user is sending a scroll value

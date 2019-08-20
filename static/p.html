@@ -91,8 +91,9 @@ var hammertime = new Hammer(myElement);
 var flippedHorizontal=false;
 //var xmitThrot=0;
 //var lastTimestamp=0;
-var firstScroll=true;
+var notYetScrolled=true;
 var loadedScript=false;
+var receivedScrollData=false;
 
 
 var bottomGutter= "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
@@ -130,12 +131,12 @@ var scrollPage = function(){
     //if (Date.now() - xmitThrot >9){
 	    //console.log(percentageDone);
 	    
-	    if (firstScroll!=true){
+	    
 	    	//console.log("emitting " + percentageDone );
 	    	socket.emit('scrollPos', {
 					position: percentageDone
 				});
-			}
+			
 			
 	    //xmitThrot  = Date.now();   
 	  //}
@@ -197,56 +198,22 @@ var realignScreen=function(){
 	//console.log("realignScreen scrolling to " + myPos + "px");
 	$('body').animate({scrollTop: myPos+ "px"}, 0, 'linear'); 
 
+
 } 
 
 
-$( document ).ready(function() {
-
-    $.get("/script/script.txt", function(data){
+ socket.on('bScrollPos', function(data) { //listen for position changes
     	
-      $("#scrollpart").text(data+ bottomGutter); 
-      loadedScript=true;
-      if (scrollPercent !=0){//we already have positioning data
-				realignScreen();      	
-      	}
-      
-    });   
-    if(queryDict.control){
-    $("#letterbar").css("visibility", "visible");//that grey bar that shows the 16:9 workspace
-  	}
-    $( window ).scroll(function() {
-      if(queryDict.control){
-      	if (firstScroll==true){
-      		firstScroll=false;      		
-      	}else{
-        	scrollPage(); //scroll the page for everyone if control=true in your querystring
-      	}
-        }
-    });    
-    
-    
-    $(window).resize(function(){
-    	realignScreen();
-    	
-		});
-    
-    socket.on('bScrollPos', function(data) { //listen for position changes
     	
         scrollPercent=data.position;
         
       
-	    	    if (firstScroll==true){ //page hasn't yet been scrolled
-       	 		
+	    	    
        	 			if (loadedScript==true){ //we have positioning data and loaded script so we can position
 	       	 			realignScreen();	       	 			
 	       	 		}  //otherwise the script isn't loaded yet. When it loads, it will see we have scroll data and scroll
 	       	 		  	  	
-       	  	}else{
-       	  			if(queryDict.control==false){ //it's a viewer
-       	  				realignScreen();
-       	  			}
-       	  		}
-	    	    
+       	  	receivedScrollData=true;
 	      
     });
 
@@ -255,7 +222,7 @@ $( document ).ready(function() {
     	//console.log("receiving font size changes");
         fontsize=data.fontsize;
         $("#scrollpart").css("font-size", data.fontsize + "vw");
-        realignScreen();
+        
     });
 
 		socket.on('breload', function(data) {
@@ -267,6 +234,39 @@ $( document ).ready(function() {
 	    console.log("reloading script");
 				
 		});
+
+$( document ).ready(function() {
+	
+	socket.emit('hello');
+
+    $.get("/script/script.txt", function(data){
+    	
+	      $("#scrollpart").text(data+ bottomGutter); 
+	      loadedScript=true;
+	      if (receivedScrollData==true){//we already have positioning data
+					realignScreen();      	
+	      	}
+	      
+    });   
+    
+    if(queryDict.control){
+    $("#letterbar").css("visibility", "visible");//that grey bar that shows the 16:9 workspace
+  	}
+    $( window ).scroll(function() {
+      if(queryDict.control){
+
+        	scrollPage(); //scroll the page for everyone if control=true in your querystring
+
+        }
+    });    
+    
+    
+    $(window).resize(function(){
+    	realignScreen();
+    	
+		});
+    
+   
 		
 		
 	$(document).keypress(function(e) {
