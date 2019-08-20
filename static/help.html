@@ -27,36 +27,40 @@ body{
 }
 
 
-.select-css {
-	
-	font-family: "DejaVu Sans Mono";
-  font-size: 3vh;
-	
-}
-
-#qrcode{	
-	background-size: cover;
-	display: inline-block;
-	width: 40vh;
-	height: 40vh;
-}
  
 </style>
 <span style="font-size:4vh">Hellaprompter<br>Help</span><br><br>
 
-<p><b>Prompter instructions:</b></p>
-<ul><li>Click or tap the screen to go full-screen</li></ul>
+<h3 id="editthescript">Edit the script</h3>
 
-<br>
-<p><b>Control mode instructions:</b></p>
+<p>Select "Editor" from the dropdown, then "Go."  In the editor, paste in your script and format it. Click "Save and update clients" and you're ready to start a teleprompter session. You can return here any time and update your script even in the middle of a session, or just keep a browser window open with the editor loaded if you want to make changes as you go.</p>
+
+<h3 id="connectterminals">Connect terminals</h3>
+
+<p>If your prompter is a second monitor attached to your primary PC, open a new browser window. If you're using a phone or a tablet as the prompter, IM yourself the URL or scan the QR code. </p>
+
+<p>You can either control the prompter ("Controller") or open a prompter window ("Prompter".) If you're you're using a teleprompter with a beam splitter, you'll likely be choosing "Prompter (flip horizontal)." Don't forget to disable screensavers (at least until I figure out how to implement nosleep.js.)</p>
+
+<h2 id="prompterinstructions">Prompter instructions</h2>
+
+<p>In Prompter mode:</p>
+
 <ul>
-<li>From the Launcher, enter the Controller via the dropdown.</li>
-<li>Scroll the window, and all connected Prompters will scroll with you. The top of your phone is the top of your screen.</li>
-<li>Pinch to zoom text size (kinda works) or use the + and - buttons if you have a keyboard.</li>
-<li>A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area.</li>
-<li>Update the script via the editor and all Prompters will be refreshed with the new text.</li>
+<li>Click or tap the screen to go full-screen</li>
 </ul>
 
+<p>In Controller mode:</p>
 
+<ul>
+<li>Scroll the window, and all connected Prompters will scroll with you. The top of your phone is the top of your screen.</li>
+
+<li>Use the + and - buttons if you have a keyboard. Pinch to do the same on mobile (kinda works.)</li>
+
+<li>A grey line appears on the screen. Above the line is a 16x9 aspect ratio landscape canvas, defining a good-guess safe area.</li>
+</ul>
+
+<h2 id="knownbugs">Known bugs</h2>
+
+<p>On some older versions of Chrome (and maybe other browsers) there's a weird bug if you open both a controller and a prompter window in the same Chrome user instance, you get jerky motion, as the controlling Chrome won't emit as much for some reason. You can get around this if you open either your controller window or your prompter window(s) in an incognito window.</p>
 </body>
 </html>
