@@ -32,3 +32,6 @@ In Controller mode:
 
 ## Known bugs
 On some older versions of Chrome (and maybe other browsers) there's a weird bug if you open both a controller and a prompter window in the same Chrome user instance, you get jerky motion, as the controlling Chrome won't emit as much for some reason. You can get around this if you open either your controller window or your prompter window(s) in an incognito window.
+
+## Source code
+Hellaprompter is written in nodejs and uses socket.io to connect all the terminals.
