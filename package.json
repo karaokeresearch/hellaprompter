@@ -21,7 +21,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "socket.io": "2.1.1",
+    "socket.io": "2.5.0",
     "express": "4.16.3",
     "open": "6.4.0",
     "clear": "0.1.0",
